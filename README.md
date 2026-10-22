@@ -9,10 +9,10 @@ Project ini berisi scene WebXR pertama menggunakan A-Frame 1.7.1.
 ## Jawaban Refleksi
 
 **1. Mengapa posisi objek yang terlihat pertama kali oleh pengguna memakai nilai z negatif?**
-Kamera A-Frame secara default menghadap ke arah sumbu Z negatif (Z positif ada di belakang pengguna). Jadi agar objek ada di depan dan langsung terlihat, nilai z-nya harus negatif.
+Karena pada A-Frame, arah pandangan kamera menghadap ke sumbu Z negatif. Jadi, kalau ingin objek langsung terlihat di depan pengguna saat membuka tampilan 3D, posisi objek harus diberi nilai Z negatif.
 
 **2. Mengapa WebXR hanya aktif pada HTTPS atau localhost?**
-WebXR memakai data sensitif seperti posisi dan gerakan kepala (dan kamera pada AR). Peramban hanya mengizinkannya di secure context (HTTPS atau localhost) supaya data tidak bisa disadap atau diubah orang lain di jaringan.
+Karena WebXR membutuhkan akses ke data perangkat, seperti pergerakan kepala dan posisi pengguna. Oleh sebab itu, browser membatasi penggunaannya pada koneksi yang aman agar data tersebut lebih terlindungi.
 
 **3. Jelaskan perbedaan peran WebXR Device API, three.js, dan A-Frame dengan bahasamu sendiri.**
-WebXR Device API adalah standar peramban untuk berkomunikasi dengan perangkat VR/AR. three.js adalah pustaka grafik 3D yang menggambar scene, kamera, dan material. A-Frame berada di atas three.js dan menyediakan tag HTML seperti <a-box>, sehingga kita bisa membuat scene WebXR tanpa menulis kode 3D tingkat rendah.
+WebXR Device API berfungsi menghubungkan browser dengan perangkat VR atau AR. Three.js digunakan untuk membuat dan mengatur tampilan objek 3D, sedangkan A-Frame memudahkan pembuatan tampilan 3D menggunakan tag HTML sehingga tidak perlu menulis kode yang terlalu rumit.
