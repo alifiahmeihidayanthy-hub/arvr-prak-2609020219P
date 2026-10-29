@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang='id'>
 <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Ruang Perkenalan Diri</title>
- <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Praktikum AVR - Pertemuan 3</title>
+<style>
+body { margin: 0; overflow: hidden; font-family: sans-serif; }
+#log { position: fixed; top: 8px; left: 8px; right: 8px; color: #fff;
+font-size: 13px; pointer-events: none; }
+</style>
+<script type='importmap'>
+{
+"imports": {
+"three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+}
+}
+</script>
 </head>
 <body>
- <a-scene>
-     <a-text value="Alifiah Mei Hidayanthy - 2609020219P" position="0 2.8 -4" align="center" color="#222222" width="8"></a-text>
- <a-plane position="0 0 -4" rotation="-90 0 0" width="10" height="10" color="#C9B79C"></a-plane>
- <a-sky color="#A8D8F0"></a-sky>
-   <a-box position="-2 0.5 -4" rotation="0 30 0" color="#E76F51"
- animation="property: rotation; to: 0 390 0; loop: true; dur: 6000; easing: linear"></a-box>
- <a-sphere position="0 1 -4" radius="0.8" color="#2A9D8F"></a-sphere>
- <a-cylinder position="2 0.75 -4" radius="0.5" height="1.5" color="#E9C46A"></a-cylinder>
- </a-scene>
+<div id='log'>Log interaksi akan tampil di sini</div>
+<script type='module' src='main.js'></script>
 </body>
 </html>

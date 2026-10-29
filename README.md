@@ -1,18 +1,99 @@
-# Praktikum AR/VR - Pertemuan 1
+# Praktikum AVR – Pertemuan 3
 
-- Nama : Alifiah Mei Hidayanthy
-- NIM : 2609020219P
-- Link demo : https://alifiahmeihidayanthy-hub.github.io/arvr-prak-2609020219P/
+Proyek ini merupakan simulasi interaktif 3D berbasis **Three.js** yang mendukung mode desktop dan WebXR/VR. Pengguna dapat melihat dan berinteraksi dengan objek 3D menggunakan mouse dan keyboard, atau menggunakan controller VR pada perangkat yang mendukung WebXR.
 
-Project ini berisi scene WebXR pertama menggunakan A-Frame 1.7.1.
+## Fitur
 
-## Jawaban Refleksi
+- Menampilkan tiga objek awal: kubus, bola, dan kerucut.
+- Mengubah bentuk dan warna objek dengan klik mouse pada mode desktop.
+- Menyorot objek saat kursor diarahkan ke objek tersebut.
+- Menggerakkan kamera menggunakan tombol **W, A, S, D** atau tombol panah.
+- Menjalankan mode VR melalui tombol **Enter VR** jika browser dan perangkat mendukung WebXR.
+- Mengambil dan melepaskan objek menggunakan trigger controller VR.
+- Mengubah warna dan bentuk objek menggunakan tombol grip controller VR.
+- Mengubah ukuran objek yang sedang dipegang dengan thumbstick, jika didukung controller.
+- Menampilkan log interaksi di bagian atas layar dan di console browser.
 
-**1. Mengapa posisi objek yang terlihat pertama kali oleh pengguna memakai nilai z negatif?**
-Karena pada A-Frame, arah pandangan kamera menghadap ke sumbu Z negatif. Jadi, kalau ingin objek langsung terlihat di depan pengguna saat membuka tampilan 3D, posisi objek harus diberi nilai Z negatif.
+## Struktur Proyek
 
-**2. Mengapa WebXR hanya aktif pada HTTPS atau localhost?**
-Karena WebXR membutuhkan akses ke data perangkat, seperti pergerakan kepala dan posisi pengguna. Oleh sebab itu, browser membatasi penggunaannya pada koneksi yang aman agar data tersebut lebih terlindungi.
+```text
+pertemuan-3/
+├── index.html   # Halaman utama dan pemuatan Three.js
+├── main.js      # Scene 3D, objek, kontrol desktop, dan interaksi WebXR
+└── README.md    # Dokumentasi proyek
+```
 
-**3. Jelaskan perbedaan peran WebXR Device API, three.js, dan A-Frame dengan bahasamu sendiri.**
-WebXR Device API berfungsi menghubungkan browser dengan perangkat VR atau AR. Three.js digunakan untuk membuat dan mengatur tampilan objek 3D, sedangkan A-Frame memudahkan pembuatan tampilan 3D menggunakan tag HTML sehingga tidak perlu menulis kode yang terlalu rumit.
+## Persyaratan
+
+- Browser modern yang mendukung JavaScript module dan WebGL, misalnya Google Chrome atau Microsoft Edge.
+- Koneksi internet untuk memuat Three.js dari jsDelivr CDN.
+- Untuk mode VR: browser dan perangkat yang mendukung WebXR serta koneksi melalui **localhost** atau **HTTPS**.
+
+## Cara Menjalankan
+
+Karena proyek menggunakan JavaScript ES Modules dan import map, jalankan melalui server lokal, bukan dengan membuka `index.html` langsung menggunakan `file://`.
+
+### Opsi 1: Menggunakan Visual Studio Code
+
+1. Ekstrak folder proyek.
+2. Buka folder `pertemuan-3` di Visual Studio Code.
+3. Pasang ekstensi **Live Server** jika belum tersedia.
+4. Klik kanan `index.html`, lalu pilih **Open with Live Server**.
+5. Halaman simulasi akan terbuka di browser.
+
+### Opsi 2: Menggunakan Python
+
+Jika Python sudah terpasang:
+
+1. Buka terminal di dalam folder `pertemuan-3`.
+2. Jalankan perintah:
+
+   ```bash
+   python -m http.server 8000
+   ```
+
+3. Buka `http://localhost:8000` di browser.
+
+## Kontrol
+
+### Mode Desktop
+
+| Aksi | Kontrol |
+|---|---|
+| Memutar/mengubah sudut pandang | Klik dan geser mouse |
+| Menyorot objek | Arahkan kursor ke objek |
+| Mengubah warna dan bentuk objek | Klik objek |
+| Bergerak maju | `W` atau panah atas |
+| Bergerak mundur | `S` atau panah bawah |
+| Bergerak ke kiri | `A` atau panah kiri |
+| Bergerak ke kanan | `D` atau panah kanan |
+
+### Mode VR
+
+| Aksi | Kontrol |
+|---|---|
+| Memulai mode VR | Klik tombol **Enter VR** |
+| Memilih dan memegang objek | Arahkan sinar controller ke objek, lalu tekan trigger |
+| Melepaskan objek | Lepaskan trigger |
+| Mengubah warna dan bentuk | Arahkan sinar ke objek, lalu tekan grip |
+| Mengubah ukuran objek yang sedang dipegang | Gerakkan sumbu Y thumbstick, jika didukung |
+
+Nama tombol dan dukungan kontrol dapat berbeda tergantung perangkat VR yang digunakan.
+
+## Teknologi yang Digunakan
+
+- **HTML5** untuk struktur halaman.
+- **JavaScript ES Modules** untuk logika aplikasi.
+- **Three.js 0.160.0** untuk membuat dan merender scene 3D.
+- **WebXR** untuk dukungan pengalaman VR.
+- **OrbitControls** untuk kontrol kamera pada mode desktop.
+- **XRControllerModelFactory** untuk menampilkan model controller VR.
+
+Three.js dan modul pendukung dimuat melalui CDN jsDelivr, sehingga koneksi internet diperlukan saat menjalankan proyek.
+
+## Catatan
+
+- Jika tombol **Enter VR** tidak dapat digunakan, periksa apakah browser dan perangkat mendukung WebXR.
+- Fitur VR umumnya memerlukan halaman yang dibuka melalui `localhost` atau HTTPS.
+- Getaran controller hanya berjalan jika perangkat dan browser mendukung fitur haptic.
+- Log interaksi dapat dilihat di bagian atas halaman dan melalui Developer Tools → Console pada browser.
